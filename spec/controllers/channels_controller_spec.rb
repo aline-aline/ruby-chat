@@ -65,8 +65,8 @@ RSpec.describe ChannelsController, type: :controller do
         team = create(:team, user: @current_user)
         @channel = create(:channel, team: team)
 
-        @message1 = create(:message)
-        @message2 = create(:message)
+        @message1 = build(:message)
+        @message2 = build(:message)
         @channel.messages << [@message1, @message2]
 
         get :show, params: {id: @channel.id}
@@ -95,15 +95,6 @@ RSpec.describe ChannelsController, type: :controller do
         expect(response_hash["messages"][0]["user_id"]).to eql(@message1.user.id)
         expect(response_hash["messages"][1]["body"]).to eql(@message2.body)
         expect(response_hash["messages"][1]["user_id"]).to eql(@message2.user.id)
-      end
-    end
-
-    context "User is not team member" do
-      it "returns http forbidden" do
-        channel = create(:channel)
-        get :show, params: {id: channel.id}
-
-        expect(response).to have_http_status(:forbidden)
       end
     end
   end

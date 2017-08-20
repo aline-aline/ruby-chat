@@ -1,7 +1,7 @@
 FactoryGirl.define do
  factory :channel do
    slug { FFaker::Lorem.word }
-   team
+   team :dependent => :destroy
    user { team.user }
  end
 end
