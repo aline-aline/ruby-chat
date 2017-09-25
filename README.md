@@ -1,24 +1,17 @@
-# README
+# RubyChat
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+RubyChat is an application like a Slack to send messages between groups.
 
-Things you may want to cover:
+## [Stack]
+- Ruby on Rails
+- Docker
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## How to use it
+* Clone this repository
+* Run docker-composer build
+* Run docker-compose run --rm app bundle exec rake db:create db:migrate
+* Run docker-compose up
+## Run tests
+```
+docker-compose exec app bundle exec spring rspec
+```
